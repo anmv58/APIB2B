@@ -2,8 +2,8 @@ define({ "api": [
   {
     "type": "post",
     "url": "/api/v1/customer/send_request_driver_ship.php",
-    "title": "01. Gửi yêu cầu dịch vụ Ship",
-    "name": "01__G_i_y_u_c_u_d_ch_v__Ship",
+    "title": "02. Gửi yêu cầu dịch vụ giao hàng",
+    "name": "01__G_i_y_u_c_u_d_ch_v__giao_h_ng",
     "group": "Customer",
     "description": "<p>Môi trường test: <a href=\"https://vtmove-apiv2.ddns.net\">https://vtmove-apiv2.ddns.net</a> <br> <i> Kiểu body là dạng raw </i></p>",
     "version": "1.0.0",
@@ -56,7 +56,7 @@ define({ "api": [
             "type": "int",
             "optional": false,
             "field": "SelectedCarTypeID",
-            "description": "<p>Mã dịch vụ, mặc định là 152 đối với dịch vụ Ship !</p>"
+            "description": "<p>Mã dịch vụ, mặc định là 152 đối với dịch vụ Giao hàng !</p>"
           },
           {
             "group": "Parameter",
@@ -239,8 +239,8 @@ define({ "api": [
   {
     "type": "get",
     "url": "/api/v1/customer/get_customer_history.php",
-    "title": "02. Lấy thông tin lịch sử chuyến đi",
-    "name": "02__L_y_th_ng_tin_l_ch_s__chuy_n__i",
+    "title": "03. Lấy thông tin lịch sử chuyến đi",
+    "name": "03__L_y_th_ng_tin_l_ch_s__chuy_n__i",
     "group": "Customer",
     "description": "<p>Môi trường test: <a href=\"https://vtmove-apiv2.ddns.net\">https://vtmove-apiv2.ddns.net</a></p>",
     "version": "1.0.0",
@@ -286,14 +286,14 @@ define({ "api": [
             "type": "int",
             "optional": false,
             "field": "vehicleTypeId",
-            "description": "<p>Truyền mã dịch vụ Ship mặc định là 152</p>"
+            "description": "<p>Truyền mã dịch vụ Giao hàng mặc định là 152</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "status",
-            "description": "<p>mã trạng thái code đơn hàng (PROCESS_TRIP_01 =  )</p>"
+            "description": "<p>mã trạng thái code đơn hàng</p>"
           },
           {
             "group": "Parameter",
@@ -320,8 +320,8 @@ define({ "api": [
   {
     "type": "get",
     "url": "/api/v1/customer/get_process_trip.php",
-    "title": "03. Lấy trạng thái chuyến đi",
-    "name": "03__L_y_tr_ng_th_i_chuy_n__i",
+    "title": "04. Lấy trạng thái chuyến đi",
+    "name": "04__L_y_tr_ng_th_i_chuy_n__i",
     "group": "Customer",
     "description": "<p><i> Danh sách Param truyền lên: </i></p>",
     "version": "1.0.0",
@@ -513,7 +513,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "state",
-            "description": "<p>Mã trạng thái điểm giao (0 = thất bại; 1 = thành công; 2 = chờ lấy hàng (trước khi TX xác nhận đã lấy hàng ở điểm đầu); 3 = chờ giao hàng)</p>"
+            "description": "<p>Mã trạng thái điểm giao</p>"
           },
           {
             "group": "Success 200",
@@ -559,8 +559,8 @@ define({ "api": [
   {
     "type": "get",
     "url": "/api/v1/customer/get_order_detail.php",
-    "title": "04. Lấy thông tin chi tiết chuyến đi",
-    "name": "04__L_y_th_ng_tin_chi_ti_t_chuy_n__i",
+    "title": "05. Lấy thông tin chi tiết chuyến đi",
+    "name": "05__L_y_th_ng_tin_chi_ti_t_chuy_n__i",
     "group": "Customer",
     "description": "<p>Môi trường test: <a href=\"https://vtmove-apiv2.ddns.net\">https://vtmove-apiv2.ddns.net</a></p>",
     "version": "1.0.0",
@@ -661,7 +661,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "iVehicleType",
-            "description": "<p>Tên dịch vụ (truck/bike/ship)</p>"
+            "description": "<p>Tên dịch vụ giao hàng (152)</p>"
           },
           {
             "group": "Success 200",
@@ -780,5 +780,16 @@ define({ "api": [
     },
     "filename": "api/index.js",
     "groupTitle": "Customer"
+  },
+  {
+    "type": "Intro",
+    "url": "mygo.onl/info",
+    "title": "01. Mô tả",
+    "group": "Customer",
+    "description": "<p>Môi trường test: <a href=\"https://vtmove-apiv2.ddns.net\">https://vtmove-apiv2.ddns.net</a> <br> <br> <h2> - Mỗi đối tác sẽ được MyGo cấp 01 mã merchant_code dùng để xác thực mỗi khi đối tác call API sang hệ thống MyGo. </h2> <br></p> <h2> Bảng trạng thái đơn </h2> <table>  <tr>      <td><b>Mã Code Trạng Thái</b></td>      <td><b>Trạng Thái Tương Ứng</b></td>  </tr>  <tr>       <td> PROCESS_TRIP_01 </td>          <td> Tài xế đang đến </td>     </tr>  <tr>       <td> PROCESS_TRIP_02 </td>          <td> Đang di chuyển </td>     </tr> <tr>       <td> PROCESS_TRIP_05 </td>          <td> Kết thúc đơn hàng </td>     </tr>  <tr>       <td> PROCESS_TRIP_06 </td>          <td> Đã hủy </td>     </tr> </table> <h2> Bảng trạng thái điểm giao </h2> <table>  <tr>      <td><b>Mã state</b></td>      <td><b>Trạng Thái điểm Tương Ứng</b></td>  </tr>  <tr>       <td> 0 </td>          <td> Thất bại </td>     </tr>  <tr>       <td> 1 </td>          <td> Thành công </td>     </tr> <tr>       <td> 2 </td>          <td> Chờ nhận hàng (TX chưa đến lấy hàng ) </td>     </tr>  <tr>       <td> 3 </td>          <td> Chờ giao hàng (Sau khi TX đã lấy hàng và bắt đầu đi giao hàng) </td>     </tr> </table>",
+    "version": "1.0.0",
+    "filename": "api/index.js",
+    "groupTitle": "Customer",
+    "name": "IntroMygoOnlInfo"
   }
 ] });
