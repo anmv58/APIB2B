@@ -1,0 +1,784 @@
+define({ "api": [
+  {
+    "type": "post",
+    "url": "/api/v1/customer/send_request_driver_ship.php",
+    "title": "01. Gửi yêu cầu dịch vụ Ship",
+    "name": "01__G_i_y_u_c_u_d_ch_v__Ship",
+    "group": "Customer",
+    "description": "<p>Môi trường test: <a href=\"https://vtmove-apiv2.ddns.net\">https://vtmove-apiv2.ddns.net</a> <br> <i> Kiểu body là dạng raw </i></p>",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header-Example:",
+          "content": "{\n    \"Content-Type\": \"application/json\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "distance",
+            "description": "<p>Tổng quãng đường của cuốc đi</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "stateName",
+            "description": "<p>Tên tỉnh thành</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "countryName",
+            "description": "<p>Tên quốc gia</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "SelectedCarTypeID",
+            "description": "<p>Mã dịch vụ, mặc định là 152 đối với dịch vụ Ship !</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "PickUpAddress",
+            "description": "<p>Địa chỉ điểm đầu (điểm lấy hàng)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "PickUpLongitude",
+            "description": "<p>Kinh độ điểm đầu (điểm lấy hàng)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "PickUpLatitude",
+            "description": "<p>Vĩ độ điểm đầu (điểm lấy hàng)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "DestAddress",
+            "description": "<p>Địa chỉ điểm cuối trong danh sách các điểm giao hàng (tối đa 5 điểm giao/1 lần đặt chuyến)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "DestLongitude",
+            "description": "<p>Kinh độ điểm cuối trong danh sách các điểm giao hàng</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "DestLatitude",
+            "description": "<p>Vĩ độ điểm cuối trong danh sách các điểm giao hàng</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "merchant_code",
+            "description": "<p>Mã xác thực giữa Mygo và đối tác. Mã này do Mygo cung cấp.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "jsonArray",
+            "optional": false,
+            "field": "listReceivePoint",
+            "description": "<p>Danh sách các điểm giao</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "receiveAddress",
+            "description": "<p>Địa chỉ điểm giao</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Stirng",
+            "optional": false,
+            "field": "receiveUserName",
+            "description": "<p>Tên người nhận tại điểm giao</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "receiveUserPhone",
+            "description": "<p>Số điện thoại người nhận tại điểm giao</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "note",
+            "description": "<p>Ghi chú cho điểm giao</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "float",
+            "optional": false,
+            "field": "latitude",
+            "description": "<p>Vĩ độ điểm giao</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "float",
+            "optional": false,
+            "field": "longitude",
+            "description": "<p>Kinh độ điểm giao</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "feeCod",
+            "description": "<p>Tiền thu hộ COD</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "parcelName",
+            "description": "<p>Tên hàng hóa</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "promotion_code",
+            "description": "<p>Mã Khuyến Mãi (Áp dụng nếu có)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Body-Example:",
+          "content": "{\n       \"distance\": 13326,\n       \"stateName\": \"Hà Nội\",\n       \"countryName\": \"Vietnam\",\n       \"selectedCarTypeID\": 152,\n       \"PickUpAddress\": \"Số, Ngõ 16 Tạ Quang Bửu, Bách Khoa, Hai Bà Trưng, Hà Nội, Vietnam\",\n       \"PickUpLongitude\": 21.007541,\n       \"PickUpLatitude\": 105.847476,\n       \"DestAddress\": \"Phố Phú Thượng, Phú Xá, Phú Thượng, Tây Hồ, Hà Nội, Vietnam\",\n       \"DestLatitude\": 21.0873555,\n       \"DestLongitude\": 105.8094916,\n       \"merchant_code\": \"DOITAC_1\",\n       \"listReceivePoints\": [\n           {\n               \"receiveAddress\": \"Phố Phú Thượng, Phú Xá, Phú Thượng, Tây Hồ, Hà Nội, Vietnam\",\n               \"receiveUserName\": \"A Định\",\n               \"receiveUserPhone\": \"0389595186\",\n               \"note\": \"\",\n               \"latitude\": 21.0873555,\n               \"longitude\": 105.8094916,\n               \"feeCod\": 0,\n               \"parcelName\": \"\",\n           }\n       ],\n       \"promotion_code\":\"\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int",
+            "optional": false,
+            "field": "status",
+            "description": "<p>200</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>thông báo trả về</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>Dữ liệu trả về</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int",
+            "optional": false,
+            "field": "iRequestId",
+            "description": "<p>Mã Id yêu cầu</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Example:",
+          "content": "{\n    \"status\": 200,\n       \"message\": \"Đang tìm tài xế\",\n       \"data\": {\n           \"iRequestId\": 75125\n       }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Failed-Example:",
+          "content": "{\n    \"status\": 400,\n    \"message\": \"Invalid token\",\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "api/index.js",
+    "groupTitle": "Customer"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/customer/get_customer_history.php",
+    "title": "02. Lấy thông tin lịch sử chuyến đi",
+    "name": "02__L_y_th_ng_tin_l_ch_s__chuy_n__i",
+    "group": "Customer",
+    "description": "<p>Môi trường test: <a href=\"https://vtmove-apiv2.ddns.net\">https://vtmove-apiv2.ddns.net</a></p>",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header-Example:",
+          "content": "{\n    \"Content-Type\": \"application/json\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "merchant_code",
+            "description": "<p>Mã xác thực giữa Mygo và đối tác. Mã này do Mygo cung cấp.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Số thứ tự trang kết quả.(Danh sách lịch sử hiện thị theo thứ tự gần đây nhất, chia theo trang, mỗi trang có 10 kết quả, nhập số thứ tự Page sẽ trả về trang kết quả tương ứng)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "vehicleTypeId",
+            "description": "<p>Truyền mã dịch vụ Ship mặc định là 152</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p>mã trạng thái code đơn hàng (PROCESS_TRIP_01 =  )</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "orderCode",
+            "description": "<p>mã chữ đơn hàng (tìm kiếm chính xác đơn hàng)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Example:",
+          "content": "{\n       \"status\": 200,\n       \"message\": null,\n       \"data\": [\n           {\n               \"iTripId\": \"7469\",\n               \"vRideNo\": \"69678613\",\n               \"iUserId\": \"5525779\",\n               \"iDriverId\": \"608543\",\n               \"tripType\": \"Km\",\n               \"tripTypeSecond\": \"0\",\n               \"tTripRequestDate\": \"2019-06-25 11:14:03\",\n               \"tDriverArrivedDate\": \"2019-06-25 11:13:54\",\n               \"tStartDate\": \"2019-06-25 11:13:55\",\n               \"tEndDate\": \"2019-06-25 11:14:02\",\n               \"iDriverVehicleId\": \"33178\",\n               \"tStartLat\": \"105.847\",\n               \"tStartLong\": \"21.0075\",\n               \"tEndLat\": \"21.0873555\",\n               \"tEndLong\": \"105.8094916\",\n               \"tSaddress\": \"Số, Ngõ 16 Tạ Quang Bửu, Bách Khoa, Hai Bà Trưng, Hà Nội, Vietnam\",\n               \"tDaddress\": \"Phố Phú Thượng, Phú Xá, Phú Thượng, Tây Hồ, Hà Nội, Vietnam\",\n               \"iFare\": \"71000\",\n               \"fPricePerKM\": \"66000\",\n               \"fPricePerKM_0\": \"11500\",\n               \"fPricePerKM_30\": \"3500\",\n               \"fPricePerKM_60\": \"3500\",\n               \"iBaseFare\": \"71000\",\n               \"iBaseFare_30\": \"0\",\n               \"iBaseFare_NB_HN\": \"0\",\n               \"iBaseFare_HN_NB\": \"0\",\n               \"fPricePerMin\": \"1.5\",\n               \"fCommision\": \"10650\",\n               \"fDistance\": \"13326\",\n               \"fDuration\": \"0\",\n               \"iActive\": \"Finished\",\n               \"iVerificationCode\": \"1442\",\n               \"eVerified\": \"Verified\",\n               \"eCarType\": \"CarX\",\n               \"iVehicleTypeId\": \"152\",\n               \"fPickUpPrice\": \"0\",\n               \"fNightPrice\": \"1\",\n               \"vTripPaymentMode\": \"Cash\",\n               \"vCurrencyPassenger\": \"VND\",\n               \"vCurrencyDriver\": \"VND\",\n               \"fRatioPassenger\": \"1\",\n               \"fRatioDriver\": \"1\",\n               \"ePayment_request\": \"No\",\n               \"vCancelReason\": \"\",\n               \"vCancelComment\": \"\",\n               \"eCancelled\": \"No\",\n               \"vCouponCode\": \"\",\n               \"vDiscount\": \"\",\n               \"fDiscount\": \"0\",\n               \"eDriverPaymentStatus\": \"Settelled\",\n               \"ePaymentCollect\": \"Yes\",\n               \"eType\": \"Deliver\",\n               \"iPackageTypeId\": \"0\",\n               \"vSenderName\": \"\",\n               \"vSenderMobile\": \"\",\n               \"vReceiverName\": \"\",\n               \"vReceiverMobile\": \"\",\n               \"tDetailFromAddr\": \"\",\n               \"tDetailToAddr\": \"\",\n               \"bTipDeliver\": \"1\",\n               \"bTantayDeliver\": \"0\",\n               \"bKyDeliver\": \"0\",\n               \"fCodDeliver\": \"0\",\n               \"tPickUpIns\": \"\",\n               \"tDeliveryIns\": \"\",\n               \"tPackageDetails\": \"\",\n               \"iUserPetId\": \"0\",\n               \"vDeliveryConfirmCode\": \"\",\n               \"fRatio_VND\": \"1.000000\",\n               \"fRatio_USD\": \"0.000000\",\n               \"eFareType\": \"Regular\",\n               \"fMinFareDiff\": \"0\",\n               \"fWalletDebit\": \"14200\",\n               \"fSurgePriceDiff\": \"0\",\n               \"vBeforeImage\": \"\",\n               \"vAfterImage\": \"\",\n               \"fTripGenerateFare\": \"0\",\n               \"fGDtime\": \"\",\n               \"fGDdistance\": \"\",\n               \"fTipPrice\": \"0\",\n               \"iQty\": \"1\",\n               \"fVisitFee\": \"0\",\n               \"fMaterialFee\": \"0\",\n               \"fMiscFee\": \"0\",\n               \"fDriverDiscount\": \"0\",\n               \"fCancellationFare\": \"0\",\n               \"eCancelChargeFailed\": \"No\",\n               \"eCancelledBy\": \"Passenger\",\n               \"vChannel\": \"\",\n               \"fPickNormalTime\": \"1\",\n               \"tDriverLat\": null,\n               \"tDriverLong\": null,\n               \"distance\": \"0\",\n               \"duration\": \"0\",\n               \"iDurationRent\": \"0\",\n               \"tNoteDriver\": \"\",\n               \"vSignatureImage\": \"\",\n               \"vReceiverImage\": \"\",\n               \"fTipDeliver\": \"0\",\n               \"desOfGood\": \"\",\n               \"noteForDriver\": \"\",\n               \"noteOfGood\": \"\",\n               \"transfer_return_status\": \"0\",\n               \"trip_code\": \"GNT0U169118\",\n               \"last_progress_trip\": \"Finished\",\n               \"reason_transfer\": null,\n               \"last_progress_trip_code\": \"PROCESS_TRIP_05\",\n               \"last_progress_trip_name\": \"Thành công\",\n               \"fareBaseDistance\": \"66000\",\n               \"additionalFareForPointDelivery\": \"5000\",\n               \"additionalFareForCOD\": \"0\",\n               \"driver_income\": \"56800\",\n               \"truckId\": \"0\",\n               \"vName\": \"Mai Văn An\",\n               \"vPhone\": \"0921906536\",\n               \"listReceivePoint\": [\n                   {\n                       \"tripPointsId\": \"5685\",\n                       \"rtdId\": \"80357\",\n                       \"iTripId\": \"7469\",\n                       \"tripPointOrder\": \"1\",\n                       \"receiveAddress\": \"Phố Phú Thượng, Phú Xá, Phú Thượng, Tây Hồ, Hà Nội, Vietnam\",\n                       \"receiveUserName\": \"A Định\",\n                       \"receiveUserPhone\": \"0389595186\",\n                       \"note\": \"\",\n                       \"latitude\": \"21.0873555\",\n                       \"longitude\": \"105.8094916\",\n                       \"updateTime\": \"2019-06-25 11:13:57\",\n                       \"state\": \"1\",\n                       \"feeCod\": \"0\",\n                       \"parcelName\": \"\",\n                       \"parcelPrice\": \"0\",\n                       \"reason\": null\n                   },\n                   {\n                       \"tripPointsId\": \"5686\",\n                       \"rtdId\": \"80357\",\n                       \"iTripId\": \"7469\",\n                       \"tripPointOrder\": \"2\",\n                       \"receiveAddress\": \"66LK6A Nguyễn Văn Lộc, Hà Đông, Hà Nội\",\n                       \"receiveUserName\": \"A An\",\n                       \"receiveUserPhone\": \"0982405200\",\n                       \"note\": \"hello my boy\",\n                       \"latitude\": \"20.9857383\",\n                       \"longitude\": \"105.780868\",\n                       \"updateTime\": \"2019-06-25 11:13:59\",\n                       \"state\": \"0\",\n                       \"feeCod\": \"0\",\n                       \"parcelName\": \"\",\n                       \"parcelPrice\": \"0\",\n                       \"reason\": \"\"\n                   }\n               ]\n           }\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "api/index.js",
+    "groupTitle": "Customer"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/customer/get_process_trip.php",
+    "title": "03. Lấy trạng thái chuyến đi",
+    "name": "03__L_y_tr_ng_th_i_chuy_n__i",
+    "group": "Customer",
+    "description": "<p><i> Danh sách Param truyền lên: </i></p>",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header-Example:",
+          "content": "{\n    \"Content-Type\": \"application/json\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "merchant_code",
+            "description": "<p>Mã xác thực giữa Mygo và đối tác. Mã này do Mygo cung cấp.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "iRequestId",
+            "description": "<p>Mã yêu cầu của cuốc đi (trả về khi thực hiện đặt cuốc)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Param-Example:",
+          "content": "{\n    \"iRequestId\": 70594\n    \"merchant_code\": DOITAC_01\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int",
+            "optional": false,
+            "field": "status",
+            "description": "<p>200</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Thông báo trả về</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "jsonArray",
+            "optional": false,
+            "field": "data",
+            "description": "<p>trả về trạng thái chuyến đi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "jsonArray",
+            "optional": false,
+            "field": "tripStatus",
+            "description": "<p>danh sách trạng thái đơn hàng</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "progress_trip_id",
+            "description": "<p>Mã id trạng thái đơn</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status_date",
+            "description": "<p>Thời điểm ghi nhận trạng thái</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "label",
+            "description": "<p>Tên trạng thái</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "jsonArray",
+            "optional": false,
+            "field": "pointStatus",
+            "description": "<p>danh sách trạng thái điểm giao</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "tripPointsId",
+            "description": "<p>Mã ID điểm giao</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "rtdId",
+            "description": "<p>Mã yêu cầu của cuốc đi (trả về khi thực hiện đặt cuốc)</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "iTripId",
+            "description": "<p>Mã Id của chuyến đi (mã đơn)</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "tripPointOrder",
+            "description": "<p>Thứ tự điểm giao trong chuyến đi (khi cuốc đi có nhiều hơn 1 điểm giao)</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "receiveAddress",
+            "description": "<p>Địa chỉ điểm giao hàng</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "receiveUserName",
+            "description": "<p>Tên người nhận tại điểm giao</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "receiveUserPhone",
+            "description": "<p>Sđt người nhận tại điểm giao</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "note",
+            "description": "<p>Ghi chú của điểm giao</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "latitude",
+            "description": "<p>Vĩ độ điểm giao</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "longitude",
+            "description": "<p>Kinh độ điểm giao</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "updateTime",
+            "description": "<p>Thời gian điểm giao được cập nhật trạng thái mới</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "state",
+            "description": "<p>Mã trạng thái điểm giao (0 = thất bại; 1 = thành công; 2 = chờ lấy hàng (trước khi TX xác nhận đã lấy hàng ở điểm đầu); 3 = chờ giao hàng)</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "feeCod",
+            "description": "<p>Tiền thu hộ COD</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "parcelName",
+            "description": "<p>Tên hàng hóa</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "parcelPrice",
+            "description": "<p>Giá trị hàng hóa</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>Lý do giao hàng thất bại nếu state = thất bại</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Example:",
+          "content": "{\n    \"status\": 200,\n       \"message\": null,\n       \"data\": {\n           \"tripStatus\": [\n               {\n                   \"progress_trip_id\": \"14394\",\n                   \"status\": \"COD01\",\n                   \"status_date\": \"2019-05-21 17:47:39\",\n                   \"status_flag\": \"1\",\n                   \"label\": \"Tìm tài xế\"\n               },\n               {\n                   \"progress_trip_id\": \"14410\",\n                   \"status\": \"COD02\",\n                   \"status_date\": \"2019-05-21 18:43:24\",\n                   \"status_flag\": \"1\",\n                   \"label\": \"Đã nhận hàng\"\n               },\n               {\n                   \"progress_trip_id\": \"3\",\n                   \"status\": \"COD03\",\n                   \"status_date\": null,\n                   \"status_flag\": \"0\",\n                   \"label\": \"Đã giao hàng\"\n               }\n           ],\n           \"pointStatus\": [\n               {\n                   \"tripPointsId\": \"1467\",\n                   \"rtdId\": \"75094\",\n                   \"iTripId\": \"4888\",\n                   \"tripPointOrder\": \"1\",\n                   \"receiveAddress\": \"Phố Phú Thượng, Phú Xá, Phú Thượng, Tây Hồ, Hà Nội, Vietnam\",\n                   \"receiveUserName\": \"A Định\",\n                   \"receiveUserPhone\": \"0389595186\",\n                   \"note\": \"\",\n                   \"latitude\": \"21.0873555\",\n                   \"longitude\": \"105.8094916\",\n                   \"updateTime\": \"2019-05-21 18:43:24\",\n                   \"state\": \"3\",\n                   \"feeCod\": \"500000\",\n                   \"parcelName\": \"Văn phòng phẩm\",\n                   \"parcelPrice\": \"500000\",\n                   \"reason\": null\n               },\n               {\n                   \"tripPointsId\": \"1468\",\n                   \"rtdId\": \"75094\",\n                   \"iTripId\": \"4888\",\n                   \"tripPointOrder\": \"2\",\n                   \"receiveAddress\": \"123 Cầu Giấy, Quan Hoa, Hà Nội\",\n                   \"receiveUserName\": \"A Định\",\n                   \"receiveUserPhone\": \"0389595186\",\n                   \"note\": \"\",\n                   \"latitude\": \"21.0873555\",\n                   \"longitude\": \"105.8094916\",\n                   \"updateTime\": \"2019-05-21 18:43:24\",\n                   \"state\": \"3\",\n                   \"feeCod\": \"500000\",\n                   \"parcelName\": \"hàng hóa\",\n                   \"parcelPrice\": \"500000\",\n                   \"reason\": null\n               }\n           ]\n       }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "api/index.js",
+    "groupTitle": "Customer"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/customer/get_order_detail.php",
+    "title": "04. Lấy thông tin chi tiết chuyến đi",
+    "name": "04__L_y_th_ng_tin_chi_ti_t_chuy_n__i",
+    "group": "Customer",
+    "description": "<p>Môi trường test: <a href=\"https://vtmove-apiv2.ddns.net\">https://vtmove-apiv2.ddns.net</a></p>",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header-Example:",
+          "content": "{\n    \"Content-Type\": \"application/json\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "merchant_code",
+            "description": "<p>Mã xác thực giữa Mygo và đối tác. Mã này do Mygo cung cấp.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "iTripId",
+            "description": "<p>Mã Id chuyến đi</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Param-Example:",
+          "content": "{\n    \"iTripId\": 3999\n    \"merchant_code\": DOITAC_01\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int",
+            "optional": false,
+            "field": "status",
+            "description": "<p>200</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Thông báo trả về</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>Trả về chi tiết chuyến đi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "tTripRequestDate",
+            "description": "<p>Thời gian yêu cầu chuyến đi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "last_progress_trip_name",
+            "description": "<p>Tên trạng thái cuối cùng của chuyến đi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "last_progress_trip_code",
+            "description": "<p>Mã trạng thái cuối cùng của chuyến đi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "iVehicleType",
+            "description": "<p>Tên dịch vụ (truck/bike/ship)</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "trip_code",
+            "description": "<p>Mã Chữ chuyến đi  (ví dụ: GNTX0BN2)</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "iFare",
+            "description": "<p>Tổng cước phí</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "vName",
+            "description": "<p>Tên Tài xế thực hiện chuyến đi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "vPhone",
+            "description": "<p>Số điện thoại của Tài xế</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "fDistance",
+            "description": "<p>Tổng quãng đường chuyến đi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "vLicencePlate",
+            "description": "<p>Biển số xe Tài xế</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "tStartLat",
+            "description": "<p>Vĩ độ điểm đón</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "tStartLong",
+            "description": "<p>Kinh độ điểm đón</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "tEndLat",
+            "description": "<p>Vĩ độ điểm cuối</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "tEndLong",
+            "description": "<p>Kinh độ điểm cuối</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "tSaddress",
+            "description": "<p>Địa chỉ điểm đầu</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "tDaddress",
+            "description": "<p>Địa chỉ điểm cuối</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int",
+            "optional": false,
+            "field": "additionalFareForCOD",
+            "description": "<p>Cước phí thu hộ COD</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int",
+            "optional": false,
+            "field": "additionalFareForPointDelivery",
+            "description": "<p>Cước phí điểm giao cộng thêm (mỗi điểm giao thêm + 5.000đ)</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int",
+            "optional": false,
+            "field": "fareBaseDistance",
+            "description": "<p>Cước phí thuần dựa trên quãng đường</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Example:",
+          "content": "{\n    \"status\": 200,\n       \"message\": null,\n       \"data\": {\n           \"tTripRequestDate\": \"2019-05-15 13:56:01\",\n           \"last_progress_trip_name\": \"\",\n           \"last_progress_trip_code\": \"PROCESS_TRIP_05\",\n           \"iVehicleType\": \"Truck\",\n           \"trip_code\": \"GNTX0BN2\",\n           \"iFare\": \"300000\",\n           \"vName\": \"Mavel Captain An\",\n           \"vPhone\": \"0921906536\",\n           \"fDistance\": \"1234\",\n           \"vLicencePlate\": \"30E 66666\",\n           \"tStartLat\": \"\",\n           \"tStartLong\": \"\",\n           \"tEndLat\": \"20.986hihi676\",\n           \"tEndLong\": \"105.78haha6\",\n           \"tSaddress\": \"456 Thụy Khuê, Ba Đình, Hà Nội\",\n           \"tDaddress\": \"nguyễn văn lộc, hà đông\",\n           \"fareBaseDistance\": null,\n           \"additionalFareForPointDelivery\": null,\n           \"additionalFareForCOD\": null,\n           \"fCommision\": \"45000\",\n           \"iTripId\": \"3908\",\n           \"vAvgRating\": \"4.58\",\n           \"points\": [\n               {\n                   \"tripPointsId\": \"313\",\n                   \"rtdId\": \"72786\",\n                   \"iTripId\": \"3908\",\n                   \"tripPointOrder\": \"1\",\n                   \"receiveAddress\": \" 123 cầu giấy, quan hoa, hà nội\",\n                   \"receiveUserName\": \"Mai Văn An\",\n                   \"receiveUserPhone\": \"đây là số phone\",\n                   \"note\": \"note đi bây bi\",\n                   \"latitude\": \"test\",\n                   \"longitude\": \"một mình\",\n                   \"updateTime\": \"2019-05-14 17:19:13\",\n                   \"state\": \"3\",\n                   \"feeCod\": \"100000\",\n                   \"parcelName\": \"hàng hóa\",\n                   \"parcelPrice\": \"0\",\n                   \"reason\": null\n               },\n               {\n                   \"tripPointsId\": \"314\",\n                   \"rtdId\": \"72786\",\n                   \"iTripId\": \"3908\",\n                   \"tripPointOrder\": \"2\",\n                   \"receiveAddress\": \"123 lương thế vinh, thanh xuân, hà nội\",\n                   \"receiveUserName\": \"Long mai \",\n                   \"receiveUserPhone\": \"0952652133\",\n                   \"note\": \"ok baby\",\n                   \"latitude\": \"20.9900935\",\n                   \"longitude\": \"105.7947686\",\n                   \"updateTime\": \"2019-05-14 17:19:13\",\n                   \"state\": \"3\",\n                   \"feeCod\": \"170000\",\n                   \"parcelName\": \"18\",\n                   \"parcelPrice\": \"19\",\n                   \"reason\": null\n               },\n               {\n                   \"tripPointsId\": \"315\",\n                   \"rtdId\": \"72786\",\n                   \"iTripId\": \"3908\",\n                   \"tripPointOrder\": \"3\",\n                   \"receiveAddress\": \"123 lương thế vinh, thanh xuân, hà nội\",\n                   \"receiveUserName\": \"Long mai \",\n                   \"receiveUserPhone\": \"0952652133\",\n                   \"note\": \"ok baby\",\n                   \"latitude\": \"20.9900935\",\n                   \"longitude\": \"105.7947686\",\n                   \"updateTime\": \"2019-05-14 17:19:13\",\n                   \"state\": \"3\",\n                   \"feeCod\": \"170000\",\n                   \"parcelName\": \"18\",\n                   \"parcelPrice\": \"19\",\n                   \"reason\": null\n               }\n           ],\n           \"vRating1\": \"5\",\n           \"vMessage\": \"\"\n       }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "api/index.js",
+    "groupTitle": "Customer"
+  }
+] });
